@@ -204,10 +204,10 @@ const EX = {
 };
 
 const LIFT_DAYS = {
-  legs:{title:'Lift A · Legs & Core', short:'Legs', type:'lift',
-    warm:'5 min easy bike or rower, then 10 bodyweight squats, 10 leg swings each side, 10 glute bridges.',
-    cool:'3 min: hamstring stretch, quad stretch, hip-flexor lunge stretch (30 sec each side).',
-    items:[['squat',4,'6–8',120],['rdl',3,'8–10',90],['legpress',3,'10–12',90],['lunge',3,'10 / leg',60],['calf',3,'12–15',45],['plank',3,'45 sec',30]]},
+  legs:{title:'Lift A · Full Body (Upper Focus)', short:'Full body', type:'lift',
+    warm:'5 min easy bike or rower, then 10 bodyweight squats, arm circles, band pull-aparts, 10 push-ups.',
+    cool:'3 min: chest doorway stretch, lat stretch, hamstring stretch (30 sec each).',
+    items:[['squat',3,'6–8',120],['rdl',3,'8',90],['incline',3,'8–10',75],['cablerow',3,'10–12',75],['lateral',3,'12–15',45],['curl',3,'10–12',45]]},
   push:{title:'Lift B · Push (Chest, Shoulders, Triceps)', short:'Push', type:'lift',
     warm:'5 min: arm circles, band pull-aparts, 10 push-ups, 1 light set of bench (empty bar × 10).',
     cool:'3 min: doorway chest stretch, overhead triceps stretch, cross-body shoulder stretch.',
@@ -450,6 +450,7 @@ function openLift(id){
     d.items.forEach(([ex,n])=>{const last=lastSetsFor(ex);sets[ex]=Array.from({length:n},(_,i)=>({w:last?(last[Math.min(i,last.length-1)].w||''):'',r:'',done:false}));});
     S.active={dayId:id,start:Date.now(),sets,warm:false,cool:false,open:d.items[0][0],restEnd:0};save();
   }
+  d.items.forEach(([ex,n])=>{if(!S.active.sets[ex])S.active.sets[ex]=Array.from({length:n},()=>({w:'',r:'',done:false}));});save();
   keepAwake(true);
   const el=document.createElement('div');el.className='screen';document.body.appendChild(el);
   const rest=document.createElement('div');rest.className='rest';document.body.appendChild(rest);
