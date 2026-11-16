@@ -201,21 +201,45 @@ const EX = {
     poses:[P('h:104,40 n:100,50 e:100,32 w:100,14 hp:100,96 k:100,124 a:100,150'),P('h:104,40 n:100,50 e:100,32 w:100,14 hp:100,96 k:126,94 a:128,122')],
     props:[{line:[60,13,140,13]}],
     cues:['Hang from a bar, shoulders engaged (not shrugged)','Raise knees to hip height or higher','Curl pelvis up slightly at the top','Lower slowly — no swinging']},
+  fly:{name:'Cable Chest Fly',muscles:'Chest',
+    poses:[P('h:100,30 n:100,46 e:76,52 w:52,58 e2:124,52 w2:148,58 hp:100,92 k:94,120 a:92,150 k2:106,120 a2:108,150'),P('h:100,30 n:100,46 e:86,64 w:98,74 e2:114,64 w2:102,74 hp:100,92 k:94,120 a:92,150 k2:106,120 a2:108,150')],
+    props:[{cable:[12,40,'w']},{cable:[188,40,'w2']}],
+    cues:['Front view: cables set at chest height, one step forward','Slight bend in elbows — keep it fixed','Hug a big tree: bring hands together in front of chest','Open slowly until you feel a chest stretch']},
+  ohtri:{name:'Overhead Dumbbell Triceps Extension',muscles:'Triceps (long head)',foot:1,
+    poses:[P('h:100,30 n:100,46 e:105,22 w:90,38 hp:100,92 k:101,121 a:100,150'),P('h:100,30 n:100,46 e:105,22 w:107,4 hp:100,92 k:101,121 a:100,150')],
+    props:[{db:'w'}],
+    cues:['Hold one dumbbell with both hands overhead','Elbows point up and stay close to your head','Lower behind your head to a deep stretch','Extend to straight arms; ribs down, no arching']},
+  dips:{name:'Assisted Dips',muscles:'Chest, triceps, front delts',noFloor:1,
+    poses:[P('h:102,16 n:100,30 e:100,50 w:100,70 hp:98,76 k:106,102 a:90,118'),P('h:103,38 n:100,52 e:82,62 w:100,70 hp:98,98 k:106,124 a:90,140')],
+    props:[{rect:[70,70,60,5]},{line:[76,75,76,155]},{line:[124,75,124,155]}],
+    cues:['Use the assisted dip machine or bars (add weight once easy)','Lean slightly forward for more chest','Lower until upper arms are about parallel to the floor','Press up to straight arms without shrugging']},
+  revfly:{name:'Cable Reverse Fly',muscles:'Rear delts, upper back',
+    poses:[P('h:100,30 n:100,46 e:110,54 w:116,62 e2:90,54 w2:84,62 hp:100,92 k:94,120 a:92,150 k2:106,120 a2:108,150'),P('h:100,30 n:100,46 e:78,48 w:54,50 e2:122,48 w2:146,50 hp:100,92 k:94,120 a:92,150 k2:106,120 a2:108,150')],
+    props:[{cable:[188,44,'w']},{cable:[12,44,'w2']}],
+    cues:['Front view: cables crossed at shoulder height (left hand holds right cable)','Arms nearly straight, pull out wide to a T','Squeeze shoulder blades, pause 1 sec','Return slowly — light weight']},
+  pullup:{name:'Assisted Pull-Up',muscles:'Lats, upper back, biceps',noFloor:1,
+    poses:[P('h:104,40 n:100,50 e:100,32 w:100,14 hp:100,96 k:98,122 a:90,146'),P('h:105,10 n:100,26 e:86,26 w:100,14 hp:100,72 k:98,98 a:90,122')],
+    props:[{line:[60,13,140,13]}],
+    cues:['Use the assisted pull-up machine or a band','Hands just wider than shoulders, palms away','Pull chest toward the bar, elbows drive down','Lower to full hang under control']},
+  hammer:{name:'Dumbbell Hammer Curl',muscles:'Biceps, forearms',foot:1,
+    poses:[P(STAND+' e:100,69 w:101,91'),P(STAND+' e:100,69 w:112,52')],
+    props:[{db:'w'}],
+    cues:['Palms face each other (thumbs up) the whole time','Elbows pinned at your sides','Curl up, squeeze, lower slowly','No swinging']},
 };
 
 const LIFT_DAYS = {
   legs:{title:'Lift A · Full Body (Upper Focus)', short:'Full body', type:'lift',
     warm:'5 min easy bike or rower, then 10 bodyweight squats, arm circles, band pull-aparts, 10 push-ups.',
     cool:'3 min: chest doorway stretch, lat stretch, hamstring stretch (30 sec each).',
-    items:[['squat',3,'6–8',120],['rdl',3,'8',90],['incline',3,'8–10',75],['cablerow',3,'10–12',75],['lateral',3,'12–15',45],['curl',3,'10–12',45]]},
+    items:[['squat',3,'6–8',120],['rdl',3,'8',90],['incline',3,'8–10',75],['cablerow',3,'10–12',75],['lateral',3,'12–15',45],['curl',3,'10–12',45],['fly',3,'12–15',60],['ohtri',3,'10–12',60]]},
   push:{title:'Lift B · Push (Chest, Shoulders, Triceps)', short:'Push', type:'lift',
     warm:'5 min: arm circles, band pull-aparts, 10 push-ups, 1 light set of bench (empty bar × 10).',
     cool:'3 min: doorway chest stretch, overhead triceps stretch, cross-body shoulder stretch.',
-    items:[['bench',4,'6–8',120],['ohp',3,'8–10',90],['incline',3,'10',75],['lateral',3,'12–15',45],['pushdown',3,'12',45],['pushup',2,'max',60]]},
+    items:[['bench',4,'6–8',120],['ohp',3,'8–10',90],['incline',3,'10',75],['lateral',3,'12–15',45],['pushdown',3,'12',45],['pushup',2,'max',60],['dips',3,'8–12',60],['revfly',3,'15',60]]},
   pull:{title:'Lift C · Pull (Back, Biceps, Core)', short:'Pull', type:'lift',
     warm:'5 min: easy row or bike, band pull-aparts, cat-cow, 1 light set of pulldowns.',
     cool:'3 min: lat stretch on a rack, child\'s pose, biceps wall stretch.',
-    items:[['pulldown',4,'8–10',90],['row',3,'8',90],['cablerow',3,'10–12',75],['facepull',3,'15',45],['curl',3,'10–12',45],['kneeraise',3,'12',45]]},
+    items:[['pulldown',4,'8–10',90],['row',3,'8',90],['cablerow',3,'10–12',75],['facepull',3,'15',45],['curl',3,'10–12',45],['kneeraise',3,'12',45],['pullup',3,'6–10',60],['hammer',3,'10–12',60]]},
 };
 
 // Cardio: segments [label, minutes, zone, detail]
@@ -459,18 +483,18 @@ function openLift(id){
 }
 function drawLift(el,d){
   const A=S.active;
-  const exCards=d.items.map(([ex,n,reps,rest])=>{
+  const exCards=d.items.map(([ex,n,reps,rest,ss])=>{
     const E=EX[ex], st=A.sets[ex], last=lastSetsFor(ex), open=A.open===ex;
     const complete=st.every(x=>x.done);
     const isTime=/sec/.test(reps), isMax=reps==='max';
     const lastTxt=last?`Last: ${last.map(x=>(x.w?x.w+'×':'')+(x.r||'–')).join(', ')}`:'First time — pick a weight you can do with 2 reps left';
     return `<div class="card ex ${complete?'complete':''}" id="ex-${ex}">
-      <button class="exhead" data-tog="${ex}">${figSVG(ex,'demo-sm')}<div class="grow"><div class="exname">${esc(E.name)}</div><div class="dmeta">${n} × ${esc(reps)} · rest ${rest>=60?rest/60+' min':rest+' s'}</div><div class="dmeta">${st.filter(x=>x.done).length}/${n} sets done</div></div></button>
+      <button class="exhead" data-tog="${ex}">${figSVG(ex,'demo-sm')}<div class="grow"><div class="exname">${esc(E.name)}</div><div class="dmeta">${ss?'<span class="pill bg-lift" style="margin-right:6px">Superset</span>':''}${n} × ${esc(reps)} · rest ${rest>=60?rest/60+' min':rest+' s'}</div><div class="dmeta">${st.filter(x=>x.done).length}/${n} sets done</div></div></button>
       ${open?`<div class="exbody">
         <div class="dmeta" style="margin-bottom:6px">${esc(lastTxt)}</div>
         <table class="sets"><tr><th>Set</th><th>${isTime?'Added wt':S.units}</th><th>${isTime?'Secs':'Reps'}</th><th></th></tr>
         ${st.map((x,i)=>`<tr class="${x.done?'done':''}"><td>${i+1}</td>
-          <td><input inputmode="decimal" data-w="${ex}:${i}" value="${esc(x.w)}" placeholder="${ex==='pushup'||ex==='plank'||ex==='kneeraise'?'BW':'0'}"></td>
+          <td><input inputmode="decimal" data-w="${ex}:${i}" value="${esc(x.w)}" placeholder="${ex==='pushup'||ex==='plank'||ex==='kneeraise'||ex==='dips'||ex==='pullup'?'BW':'0'}"></td>
           <td><input inputmode="numeric" data-r="${ex}:${i}" value="${esc(x.r)}" placeholder="${esc(isMax?'max':reps.split(/[–\s]/)[0])}"></td>
           <td><button class="setbtn ${x.done?'on':''}" data-set="${ex}:${i}:${rest}">${IC.check}</button></td></tr>`).join('')}
         </table>
@@ -479,7 +503,7 @@ function drawLift(el,d){
       </div>`:''}
     </div>`;
   }).join('');
-  el.innerHTML=`<div class="top"><div class="row"><button id="back" aria-label="Close">${IC.x}</button><div class="grow" style="text-align:center"><div class="sub">${esc(d.short)} day · target 45:00</div><div class="clock" id="clk">0:00</div></div><button class="btn small" id="fin">Finish</button></div><div class="bar"><i id="pb"></i></div></div>
+  el.innerHTML=`<div class="top"><div class="row"><button id="back" aria-label="Close">${IC.x}</button><div class="grow" style="text-align:center"><div class="sub">${esc(d.short)} day · target 60:00</div><div class="clock" id="clk">0:00</div></div><button class="btn small" id="fin">Finish</button></div><div class="bar"><i id="pb"></i></div></div>
   <div class="wrap" style="padding-bottom:140px">
     <h1 style="font-size:24px">${esc(d.title)}</h1>
     <div class="card ex ${A.warm?'complete':''}" style="margin-top:12px"><div class="exhead"><div class="chk ${A.warm?'on':''}" data-wc="warm">${A.warm?IC.check:''}</div><div class="grow"><div class="exname">Warm-up · 5 min</div><div class="dmeta">${esc(d.warm)}</div></div></div></div>
@@ -516,8 +540,8 @@ let restBeeped=false;
 function liftTick(el,d){
   const A=S.active;if(!A)return;
   const sec=(Date.now()-A.start)/1000;
-  const clk=$('#clk',el); if(clk){clk.textContent=fmt(sec);clk.style.color=sec>45*60?'var(--run)':'';}
-  const pb=$('#pb',el); if(pb){pb.style.width=Math.min(100,sec/2700*100)+'%';}
+  const clk=$('#clk',el); if(clk){clk.textContent=fmt(sec);clk.style.color=sec>60*60?'var(--run)':'';}
+  const pb=$('#pb',el); if(pb){pb.style.width=Math.min(100,sec/3600*100)+'%';}
   const r=$('.rest'); if(!r)return;
   if(A.restEnd){
     const left=(A.restEnd-Date.now())/1000;
